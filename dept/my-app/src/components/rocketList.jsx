@@ -11,13 +11,13 @@ const parseDate = (unixDate) => {
 const RocketItem = ({launch, favourites, setFavourites}) => {
   const [isFavourite, setIsFavourite] = useState({
     flightNumber: launch.flightNumber,
-    isFavourite: favourites.find(fav => fav.flightNumber === launch.flightNumber)
+    isFavourite: favourites.find(fav => fav.flightNumber === launch.flightNumber)?.isFavourite || false
   });
 
   useEffect(() => {
     let newFavourites = [...favourites];
     const favouriteIndex = newFavourites.findIndex(favourite => favourite.flightNumber === isFavourite.flightNumber);
-    if (favouriteIndex) {
+    if (favouriteIndex !== -1) {
       newFavourites[favouriteIndex] = {
         ...newFavourites[favouriteIndex],
         isFavourite: isFavourite.isFavourite
@@ -37,8 +37,11 @@ const RocketItem = ({launch, favourites, setFavourites}) => {
       <div className="title">{launch.rocket.rocketName}</div>
       <div className="rocketDescription">{launch.rocket.description}</div>
       <div className="launchDate">{parseDate(launch.launchDateUnix)}</div>
-      <div onClick={() => setIsFavourite(!isFavourite)} className="isFavourite">
-        {isFavourite ? <StarFilled /> : <StarEmpty />}
+      <div onClick={() => setIsFavourite({
+        ...isFavourite,
+        isFavourite: !isFavourite.isFavourite
+      })} className="isFavourite">
+        {isFavourite.isFavourite ? <StarFilled /> : <StarEmpty />}
       </div>
     </div>
   )
@@ -70,7 +73,9 @@ const RocketList = () => {
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('favourites', JSON.stringify(favourites));
+    if (favourites.length) {
+      localStorage.setItem('favourites', JSON.stringify(favourites));
+    }
   }, [favourites])
 
   const launchRocket = (searchRocket, rockets) => {
@@ -102,9 +107,7 @@ const RocketList = () => {
     }
   }, [rockets, launches])
 
-  useEffect(() => {
-    console.log(mergedData);
-  }, [mergedData])
+
   return (
     <div>
       {
