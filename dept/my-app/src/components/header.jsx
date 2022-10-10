@@ -3,7 +3,9 @@ import SpaceLogo from "../assets/logo";
 const Header = ({currentPage}) => {
   return (
     <div className='header'>
-      <SpaceLogo />
+      <div className="logo">
+        <SpaceLogo />
+      </div>
       <div className="headerTitle">
         {currentPage}
       </div>

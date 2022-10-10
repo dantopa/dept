@@ -1,38 +1,156 @@
+@font-face {
+  font-family: 'D-DIN', sans-serif;
+  src: url(D-DIN.otf);
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
+}
+
+div#root {
+  font-family: 'D-DIN', sans-serif;
+  background: black;
+}
+
+.logo {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  padding: 40px 60px;
+}
+
+.headerTitle {
+  color: white;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 48px;
+  padding: 0 60px;
+}
+
+.navigator {
+  margin-top: 20px;
+  background: linear-gradient(180deg, #121212 64.11%, #1E1E1E 100%);
+  height: 60px;
+}
+
+.navigator ul {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100%;
+}
+
+.navigator ul li {
+  list-style: none;
+  padding: 10px 20px;
+}
+
+.navigator ul li:hover {
+  cursor: pointer;
+}
+
+.navigator ul li.isActive {
+  border-bottom: solid 1px white;
+}
+
+.navigator button {
+  cursor: pointer;
+  font-family: 'D-DIN', sans-serif;
+  font-size: 20px;
+  background: transparent;
+  color: white;
+  box-shadow: none;
+  border: none;
+}
+
+.searchBar {
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.searchBar input {
+  padding: 15px;
+  color: gray;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), #121212;
+  border: none;
+  border-radius: 8px;
+  width: 400px;
+}
+
+.rocketList {
+  padding: 60px 40px;;
+}
+
+.list {
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.total {
+  color: gray;
+}
+
+.rocketItem {
+  margin-top: 20px;
+  width: 495px;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), #121212;
+  border-radius: 8px;
+}
+
+.rocketContent {
+  padding: 30px;
+}
+
+.imageRocket {
+  width: 100%;
+  height: 157px;
+}
+
+.imageRocket img {
+  width: 100%;
+  height: 100%;
+}
+
+.rocketContent .title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.rocketContent .rocketDescription {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.rocketFooter {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.loading {
+  margin-top: 10px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.paginator {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.paginator div {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.paginator .isActive {
+  border-bottom: solid 1px white;
 }
